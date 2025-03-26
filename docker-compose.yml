@@ -1,0 +1,37 @@
+services:
+
+  db_user:
+      image: postgres:16.3
+      env_file:
+        - .env
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      ports:
+        - "5432:5432"
+      networks:
+        - network_user
+      restart: unless-stopped
+
+  node_user:
+    build: .
+    container_name: node_user
+    volumes:
+      - .:/usr/src/user
+    ports:
+      - "3000:3000"
+    networks:
+      - network_user
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db_user:5432/${POSTGRES_DB}"
+    restart: unless-stopped
+    depends_on:
+      - db_user
+
+networks:
+  network_user:
+
+volumes:
+  postgres_data:
+  
