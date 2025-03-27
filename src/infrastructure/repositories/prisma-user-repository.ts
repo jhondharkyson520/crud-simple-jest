@@ -8,8 +8,8 @@ export class PrismaUserRepository implements UserRepository {
             data: user
         });
     }
-    findAll(): Promise<User[]> {
-        throw new Error("Method not implemented.");
+    async findAll(): Promise<User[]> {
+        return await prisma.user.findMany();
     }
     update(id: string, data: Partial<User>): Promise<User> {
         throw new Error("Method not implemented.");
