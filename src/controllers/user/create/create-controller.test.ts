@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { CreateUser } from "../../use-cases/user/create";
+import { CreateUser } from "../../../use-cases/user/create/create";
 import { createUserController } from "./create-controller";
 
 describe("createUserController", () => {

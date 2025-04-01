@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { CreateUser } from './create';
-import { UserRepository } from '../../infrastructure/repositories/user-repository';
+import { UserRepository } from '../../../infrastructure/repositories/user-repository';
 
 const fakeUserRepository: UserRepository = {
     create: jest.fn().mockImplementation(async (user) => ({id: uuidv4(), ...user})),

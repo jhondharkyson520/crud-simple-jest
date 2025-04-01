@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { PrismaUserRepository } from "../../infrastructure/repositories/prisma-user-repository";
-import { CreateUser } from "../../use-cases/user/create";
+import { PrismaUserRepository } from "../../../infrastructure/repositories/prisma-user-repository";
+import { CreateUser } from "../../../use-cases/user/create/create";
 
 
 

@@ -1,5 +1,5 @@
-import { User } from "../../entities/user";
-import { UserRepository } from "../../infrastructure/repositories/user-repository";
+import { User } from "../../../entities/user";
+import { UserRepository } from "../../../infrastructure/repositories/user-repository";
 import { v4 as uuidv4 } from 'uuid';
 
 export class CreateUser {

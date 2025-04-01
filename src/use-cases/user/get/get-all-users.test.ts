@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { CreateUser } from './create';
-import { UserRepository } from '../../infrastructure/repositories/user-repository';
+import { UserRepository } from '../../../infrastructure/repositories/user-repository';
 import { GetAllUsers } from './get-all-users';
 
 const fakeUserRepository: UserRepository = {
