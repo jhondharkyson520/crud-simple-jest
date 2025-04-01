@@ -9,17 +9,17 @@ const prismaUserRepository = new PrismaUserRepository();
 
 const createUser = new CreateUser(prismaUserRepository);
 const createUserHandler = createUserController(createUser);
-const getUsers = new GetAllUsers(prismaUserRepository)
+const getUsers = new GetAllUsers(prismaUserRepository);
 const getAllUsersHandler = getAllUsersController(getUsers);
 
 const routes = Router();
 
-routes.use('/create', async (req: Request, res: Response) => {
-    await createUserHandler;
+routes.post('/create', (req: Request, res: Response) => {
+    createUserHandler(req, res);
 });
 
-routes.use('/all-users', async (req: Request, res: Response) => {
-    await getAllUsersHandler;
+routes.get('/all-users', (req: Request, res: Response) => {
+    getAllUsersHandler(req, res);
 })
 
 export default routes;
