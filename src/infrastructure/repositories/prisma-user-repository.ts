@@ -14,7 +14,7 @@ export class PrismaUserRepository implements UserRepository {
     update(id: string, data: Partial<User>): Promise<User> {
         throw new Error("Method not implemented.");
     }
-    delete(id: string): Promise<User> {
-        throw new Error("Method not implemented.");
+    async delete(id: string): Promise<User> {
+        return await prisma.user.delete({ where: {id} });
     }
 }
