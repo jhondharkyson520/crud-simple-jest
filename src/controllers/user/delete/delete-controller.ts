@@ -6,7 +6,7 @@ export const deleteUserController = (deleteUser: DeleteUser) => {
         try{
             const {id} = req.params;
             const userDelete = await deleteUser.execute(id);
-            return res.status(201).json(userDelete);
+            return res.status(200).json(userDelete);
         } catch(error) {
             return res.status(500).json({error: 'Internal Server Error'})
         }

@@ -6,7 +6,7 @@ export const getAllUsersController = (getAllUsers: GetAllUsers) => {
         try {
             const user = await getAllUsers.execute();
             //console.log('List of user:', user);
-            return res.status(201).json({
+            return res.status(200).json({
                 sucess: 'Users list',
                 user
             });
