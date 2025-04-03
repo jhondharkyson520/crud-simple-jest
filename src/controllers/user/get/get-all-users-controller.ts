@@ -5,7 +5,7 @@ export const getAllUsersController = (getAllUsers: GetAllUsers) => {
     return async (req: Request, res: Response): Promise<Response> => {
         try {
             const user = await getAllUsers.execute();
-            console.log('List of user:', user);
+            //console.log('List of user:', user);
             return res.status(201).json({
                 sucess: 'Users list',
                 user
