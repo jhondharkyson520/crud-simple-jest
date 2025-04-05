@@ -24,12 +24,12 @@ describe('deleteUserController', () => {
         controller = deleteUserController(mockDeleteUserInstance);
     });
 
-    it('Return 201 and  user deleted', async () => {
+    it('Return 200 and  user deleted', async () => {
         const mockUser = {id: '1', name: 'John Doe', email: 'johndoe@gmail.com'};
         mockDeleteUserInstance.execute.mockResolvedValue(mockUser);
 
         await controller(mockRequest as Request, mockResponse as Response);
-        expect(mockResponse.status).toHaveBeenCalledWith(201);
+        expect(mockResponse.status).toHaveBeenCalledWith(200);
         expect(mockResponse.json).toHaveBeenCalledWith(mockUser);
         expect(mockDeleteUserInstance.execute).toHaveBeenCalledWith('1');
     });

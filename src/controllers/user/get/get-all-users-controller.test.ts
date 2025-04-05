@@ -24,7 +24,7 @@ describe("getAllUsersController", () => {
         jest.spyOn(console, 'log').mockImplementation(() => {});
     });
 
-    it("deve retornar 201 e a lista de usuários", async () => {
+    it("deve retornar 200 e a lista de usuários", async () => {
         const mockUsers = [
             { id: "1", name: "Usuário 1", email: "user1@example.com" },
             { id: "2", name: "Usuário 2", email: "user2@example.com" },
@@ -33,7 +33,7 @@ describe("getAllUsersController", () => {
 
         await controller(mockRequest as Request, mockResponse as Response);
 
-        expect(mockResponse.status).toHaveBeenCalledWith(201);
+        expect(mockResponse.status).toHaveBeenCalledWith(200);
         expect(mockResponse.json).toHaveBeenCalledWith({
             sucess: "Users list",
             user: mockUsers,

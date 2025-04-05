@@ -4,7 +4,7 @@ import { UserRepository } from "../../../infrastructure/repositories/user-reposi
 export class UpdateUser {
     constructor(private userRepository: UserRepository) {};
 
-    async execute(id: string, data: Partial<User>): Promise<User> {
+    async execute(id: string, data: {name?: string, email?: string}): Promise<User> {
         if(!id){
             throw new Error('Id is required for update user');
         }
