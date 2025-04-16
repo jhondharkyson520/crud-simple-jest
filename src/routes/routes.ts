@@ -6,6 +6,9 @@ import { getAllUsersController } from "../controllers/user/get/get-all-users-con
 import { GetAllUsers } from "../use-cases/user/get/get-all-users";
 import { DeleteUser } from "../use-cases/user/delete/delete";
 import { deleteUserController } from "../controllers/user/delete/delete-controller";
+import { UpdateUser } from "../use-cases/user/update/update";
+import { updateUserController } from "../controllers/user/update/update-controller";
+import { NextFunction } from "express-serve-static-core";
 
 const prismaUserRepository = new PrismaUserRepository();
 
@@ -17,6 +20,9 @@ const getAllUsersHandler = getAllUsersController(getUsers);
 
 const deleteUser = new DeleteUser(prismaUserRepository);
 const deleteUserHandler = deleteUserController(deleteUser);
+
+const updateUser = new UpdateUser(prismaUserRepository);
+const updateUserHandler = updateUserController(updateUser);
 
 const routes = Router();
 
@@ -31,5 +37,7 @@ routes.get('/all-users', (req: Request, res: Response) => {
 routes.delete('/delete/:id', (req: Request, res: Response) => {
     deleteUserHandler(req, res);
 });
+
+routes.put('/update/:id', updateUserHandler);
 
 export default routes;
