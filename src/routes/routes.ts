@@ -26,18 +26,22 @@ const updateUserHandler = updateUserController(updateUser);
 
 const routes = Router();
 
-routes.post('/create', (req: Request, res: Response) => {
-    createUserHandler(req, res);
+routes.post('/create', (req: Request, res: Response, next: NextFunction) => {
+    createUserHandler(req, res, next);
 });
 
-routes.get('/all-users', (req: Request, res: Response) => {
-    getAllUsersHandler(req, res);
+routes.get('/all-users', (req: Request, res: Response, next: NextFunction) => {
+    getAllUsersHandler(req, res, next);
 });
 
-routes.delete('/delete/:id', (req: Request, res: Response) => {
-    deleteUserHandler(req, res);
+routes.delete('/delete/:id', (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
+    deleteUserHandler(req, res, next);
 });
 
-routes.put('/update/:id', updateUserHandler);
+
+routes.put('/update/:id', (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
+    updateUserHandler(req, res, next);
+});
+
 
 export default routes;
