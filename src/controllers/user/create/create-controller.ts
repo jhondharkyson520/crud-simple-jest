@@ -1,22 +1,24 @@
-import { Request, Response } from "express";
-import { PrismaUserRepository } from "../../../infrastructure/repositories/prisma-user-repository";
+import { NextFunction, Request, RequestHandler, Response } from "express";
 import { CreateUser } from "../../../use-cases/user/create/create";
 
+type CreateBody = {
+    name?: string;
+    email?: string;
+}
 
-
-export const createUserController = (createUser: CreateUser) => {
-    return async (req: Request, res: Response): Promise<Response> => {
+export const createUserController = (createUser: CreateUser): RequestHandler => {
+    return async (req: Request<{}, {}, CreateBody>, res: Response, next: NextFunction): Promise<void> => {
         try {
-            const {name, email} = req.body;
-            //console.log('Received data:', { name, email });
+            const { name, email } = req.body;
+            if (!name || !email) {
+                res.status(400).json({ error: 'Name and email are required' });
+                return;
+            }
+
             const user = await createUser.execute(name, email);
-            //console.log('Created user:', user);
-            return res.status(201).json(user);
+            res.status(201).json(user);
         } catch (error) {
-            //console.error(error);
-            return res.status(500).json({error: 'Internal Server Error'});
-            
+            res.status(500).json({ error: 'Internal Server Error' });
         }
-    }
-    
-} 
+    };
+};
