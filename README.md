@@ -22,18 +22,24 @@ src/
   │     │     ├── create/
   │     │     ├── delete/
   │     │     ├── get/
+  │     │     ├── update/
   ├── entities/
   │     ├── user.ts
   ├── infrastructure/
   │     ├── database/
   │     ├── repositories/
+  ├── middlewares/
+  │     ├── error-handler.ts
   ├── routes/
   │     ├── routes.ts
+  ├── types/
+  │     ├── http.ts
   ├── use-cases/
   │     ├── user/
   │     │     ├── create/
   │     │     ├── delete/
   │     │     ├── get/
+  │     │     ├── update/
   ├── main.ts
   ├── Dockerfile
   ├── docker-compose.yml
@@ -56,6 +62,8 @@ export interface User {
 
 - **POST** `users/create` - Criar um novo usuário
 - **GET** `users/all-users` - Listar todos os usuários
+- **DELETE** `users/delete/:id` - Deletar usuário
+- **PUT** `users/update/:id` - Atualizar usuário
 
 ## Métodologia de desenvolvimento
 O projeto está sendo desenvolvido utilizando a métodologia agil Scrum, as sprints foram desenvolvidas por mim, no Notion, e estão divididas em:
