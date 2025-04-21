@@ -1,4 +1,4 @@
-# User Controller - Backend (Em Desenvolvimento)
+# User Controller
 
 ## Visão Geral
 Este projeto é um backend desenvolvido com ``Node.js``, ``Express``, ``Prisma ORM`` e ``TypeScript``, seguindo os princípios do ``SOLID``, ``Clean Architecture`` e ``Clean Code``. Trata-se de uma aplicação simples de um `CRUD` de usuários, utilizando  ``Testes unitários`` com `Jest`, e com armazenamento no ``PostgreSQL``. O sistema foi desenvolvido seguindo a metodologia ágil ``Scrum``.
